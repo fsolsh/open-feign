@@ -1,0 +1,35 @@
+##set server port
+server:
+  port: 8090
+
+spring:
+  ##set app name
+  application:
+    name: feign-client
+  ##use nacos discovery
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    ##close ribbon load balance, use spring cloud load balancer
+    loadbalancer:
+      ribbon:
+        enabled: false
+
+
+feign:
+  ##feign client timeout config
+  client:
+    config:
+      default:
+        connectTimeout: 500
+        readTimeout: 500
+  ##feign compression config
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+  ##feign circuit breaker config
+  circuitbreaker:
+    enabled: true
